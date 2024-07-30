@@ -6,6 +6,15 @@ The app includes a simple API call that displays a list of countries. Apikey use
 
 **MVVM (Model-View-ViewModel): Provides a clear separation of concerns, making the codebase easier to manage and test.**
 
+Project Structure The project is structured following Clean Architecture principles:
+
+domain: Contains the business logic or domain layer of the application. This layer includes entities, use cases, and any business rules.
+
+data: This layer is responsible for interacting with external data sources such as databases or APIs. It contains repository implementations and data sources.
+
+presentation: This layer handles the UI logic and presentation of data. It contains the ViewModels, UI components, and navigation logic.
+
+
 **Dependency Injection with Hilt: Facilitates the injection of dependencies, enhancing modularity and testability.**
 
 **Retrofit: Simplifies network operations, making API calls efficient and straightforward.**
