@@ -48,16 +48,6 @@ dependencies {
     implementation (libs.logging.interceptor.v480)
     implementation (libs.okhttp.v4120)
 
-    implementation(libs.androidx.room.runtime)
-    annotationProcessor(libs.androidx.room.compiler)
-    ksp(libs.androidx.room.compiler)
-
-
-    implementation(libs.androidx.room.ktx)
-
-    // optional - Test helpers
-    testImplementation(libs.androidx.room.testing)
-
 
     //Hilt
     implementation (libs.hilt.android)
@@ -74,7 +64,6 @@ dependencies {
     testImplementation (libs.mockito.inline)
     testImplementation (libs.turbine)
 
-//    testImplementation(libs.annotation)
     testImplementation(libs.mockito.kotlin)
     implementation(libs.androidx.annotation)
     testImplementation(libs.turbine)

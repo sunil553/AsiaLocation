@@ -21,7 +21,6 @@ dependencies {
     testImplementation (libs.mockito.core)
     testImplementation (libs.mockito.inline)
     testImplementation (libs.turbine)
-//    testImplementation(libs.annotation)
     testImplementation(libs.mockito.kotlin)
     implementation(libs.androidx.annotation)
     testImplementation(libs.turbine)
