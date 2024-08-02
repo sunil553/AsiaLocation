@@ -3,14 +3,14 @@ package com.llyod.data.datasource.forecast
 import com.llyod.data.common.Mapper
 import com.llyod.data.common.NetworkStatus
 import com.llyod.data.entity.location.country.CountryList
-import com.llyod.domain.entity.country.CountryListUI
-import com.llyod.data.mapper.LocationDataMapperToDomain
 import com.llyod.data.network.CountryService
 import com.llyod.domain.common.Result
 import com.llyod.domain.common.Result.Success
+import com.llyod.domain.entity.country.CountryListUI
 import com.llyod.domain.exception.NoNetworkException
 import com.llyod.domain.exception.NotFoundException
 import com.llyod.domain.exception.UnAuthorizedApi
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -18,12 +18,13 @@ import javax.inject.Inject
 class LocationDataSourceImpl @Inject constructor(
     private val mapperToDomain: Mapper<CountryList, CountryListUI>,
     private val countryService: CountryService,
-    private val networkStatus: NetworkStatus) : LocationDataSource {
+    private val networkStatus: NetworkStatus,
+    private val ioDispatcher : CoroutineDispatcher = Dispatchers.IO) : LocationDataSource {
 
     override suspend fun getLocationList(): Result<CountryListUI?> {
         return try {
             if (networkStatus.isOnline()) {
-                withContext(Dispatchers.IO) {
+                withContext(ioDispatcher) {
                     val response = countryService.getCountryList()
                     if (response.isSuccessful) {
                         if (response.isSuccessful) {
